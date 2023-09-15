@@ -52,7 +52,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         arg1 = sys.argv[1]
         # Updated regular expression for BSV addresses
-        assert re.match(r"^[13][a-km-zA-HJ-NP-Z0-9]{26,35}$", arg1) is not None
+        assert re.match(r"^[13][a-km-zA-HJ-Z0-9]{25,34}$", arg1) is not None
         searchstring = arg1.lower()
         listwide = 4 * os.cpu_count() * 2 ** len(searchstring)
         vanity = True
