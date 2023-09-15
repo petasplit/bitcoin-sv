@@ -52,7 +52,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         arg1 = sys.argv[1]
         # Updated regular expression for BSV addresses
-        assert re.match(r"^^1[0-9A-Za-z]{41}$", arg1) is not None
+        assert re.match(r"^1[0-9A-Za-z]{41}$", arg1) is not None
         searchstring = arg1.lower()
         listwide = 4 * os.cpu_count() * 2 ** len(searchstring)
         vanity = True
