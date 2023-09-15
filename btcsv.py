@@ -1,28 +1,26 @@
 #!/usr/bin/env python3
 # coding=utf8
 
-import hashlib
+from hashlib import sha256
 import re
 import sys
 import os
 import threading
 import secrets
-from pycoin.encoding import public_pair_to_sec, sec_to_bitcoin_address
+from bitcoin.wallet import CBitcoinSecret, P2PKHBitcoinAddress
 
 def randomforkey():
     # Generate a random private key for Bitcoin SV
-    # Replace with BSV-specific code
     return secrets.randbits(256)
 
 def compute_adr(priv_num):
     # Generate a Bitcoin SV address from the private key
-    public_key = public_pair_to_sec(priv_num)
-    address = sec_to_bitcoin_address(public_key)
-    return address
+    secret = CBitcoinSecret.from_secret_bytes(priv_num.to_bytes(32, 'big'))
+    address = P2PKHBitcoinAddress.from_pubkey(secret.pub)
+    return str(address)
 
 def create_rainbow_table(num_addresses):
     # Generate a rainbow table of Bitcoin SV addresses
-    # Replace with BSV-specific code
     rainbow_table = set()
     for _ in range(num_addresses):
         privkeynum = randomforkey()
