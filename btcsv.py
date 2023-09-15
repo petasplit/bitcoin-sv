@@ -51,8 +51,8 @@ def search_for_collision(target_address, rainbow_table):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         arg1 = sys.argv[1]
-        # Modify the regular expression to match BSV addresses
-        assert re.match(r"^[13][a-km-zA-HJ-NP-Z0-9]{25,34}$", arg1) is not None
+        # Updated regular expression for BSV addresses
+        assert re.match(r"^[13][a-km-zA-HJ-NP-Z0-9]{26,35}$", arg1) is not None
         searchstring = arg1.lower()
         listwide = 4 * os.cpu_count() * 2 ** len(searchstring)
         vanity = True
